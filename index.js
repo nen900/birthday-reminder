@@ -20,9 +20,12 @@ app.use(express.static(path.join(__dirname)));
 app.use(express.urlencoded ({extended: true }) ); 
 app.use(express.json());
 
-mongoose.connect(process.env.MONGO_URL)
-  .then(() => console.log("the database has been connected cussesfully"))
-  .catch(err => console.error(err));
+mongoose.connect(process.env.MONGO_URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then(() => console.log("Database connected successfully"))
+.catch(err => console.error("DB connection error:", err));
 
 const transporter = nodemailer.createTransport({
   service: "gmail",
