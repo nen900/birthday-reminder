@@ -51,7 +51,7 @@ app.post("/", async(req, res) => {
     res.redirect("/success.html");
   } catch(err) {
     console.error(err);
-    res.status(400).send("see error:" + err.message);
+    res.status(400).send("Small problem:" + err.message);
   }
 
 });

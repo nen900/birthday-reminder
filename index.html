@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>homepage, birthday.</title>
+    <title>we wish for you</title>
     <link rel="stylesheet" href="style.css">
   </head>
 
@@ -19,8 +19,10 @@
     };
   </script>
 
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+  
     <div class="detailbox">
-      <form action = "/" method = "POST">
+      <form action = "/" method = "POST" id="theform">
           <label for = "name">  First Name: </label> <br>
           <input type = "text" name= "name" placeholder = "First Name" required />
           <br> <br>
@@ -38,6 +40,22 @@
           <br> <br>
           
           <button type = "submit" > Save Details </button>
+
+          <script>
+            const form = document.getElementById("theform");
+
+            form.addEventListener("submit", function(event) {
+              if (!form.checkValidity()) {
+                return;
+              }
+            
+              confetti ({
+                particleCount: 400,
+                spread: 150,
+                origin: { y: 0.6 }
+              });
+            });
+          </script>
       </form>
     </div>
 
